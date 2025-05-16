@@ -1,19 +1,36 @@
-<html>
-
-<!-- Start of Survicate (www.survicate.com) code -->
-<script type="text/javascript">
-  (function(w) {
-    var s = document.createElement('script');
-    s.src = 'https://survey.survicate.com/workspaces/82c6e224453674edcfa7761e20e5f56d/web_surveys.js';
-    s.async = true;
-    var e = document.getElementsByTagName('script')[0];
-    e.parentNode.insertBefore(s, e);
-  })(window);
-</script>
-<!-- End of Survicate code -->
-
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Survicate Beispiel</title>
+</head>
 <body>
-    Survicate
-</body>
+  <h1>Hallo Nutzer!</h1>
 
+  <!-- Survicate-Snippet -->
+  <script>
+    // Simuliert eine vom Server bereitgestellte User-ID (niemals clientseitig manipulieren)
+    // In der Praxis vom Server per Templating einsetzen oder aus einem sicheren API-Call holen
+    const userId = 'USER_123456'; // <-- vom Backend einsetzen
+
+    window.survicate = window.survicate || [];
+    window.survicate.push(['init', {
+      user_id: userId,
+      traits: {
+        email: 'user@example.com' // Optional
+      }
+    }]);
+  </script>
+
+  <!-- Survicate Embed Script -->
+  <script>
+    (function(w, d, s, o, f, js, fjs) {
+      w['SurvicateWidgetObject'] = o;
+      w[o] = w[o] || function() { (w[o].q = w[o].q || []).push(arguments) };
+      js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
+      js.async = 1; js.src = f; js.id = "survicate-script";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(window, document, 'script', 'survicate', 'https://survey.survicate.com/workspace.js'));
+  </script>
+</body>
 </html>
