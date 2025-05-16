@@ -1,6 +1,16 @@
 <html>
 
 <script type="text/javascript">
+  (function (w) {
+    var s = document.createElement('script');
+    s.src = 'https://survey.survicate.com/workspaces/82c6e224453674edcfa7761e20e5f56d/web_surveys.js';
+    s.async = true;
+    var e = document.getElementsByTagName('script')[0];
+    e.parentNode.insertBefore(s, e);
+  })(window);
+</script>
+
+<!-- <script type="text/javascript">
     (function (w) {
         function setAttributes() {
             w._sva.setVisitorTraits({
@@ -13,7 +23,7 @@
             w.addEventListener("SurvicateReady", setAttributes);
         }
     })(window);
-</script>
+</script> -->
 
 <body>
     Survicate
