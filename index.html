@@ -1,34 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width">
-  <script type="text/javascript">
-    function xgetParameterByName(name, url) {
-      if (!url) url = window.location.href;
-      name = name.replace(/[\\[\\]]/g, "\\\\$&");
-      var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-      results = regex.exec(url);
-      if (!results) return null;
-      if (!results[2]) return '';
-      return decodeURIComponent(results[2].replace(/\\+/g, " "));
-    }
-    (function(w) {
-      w._svc = w._svc || {};
-      w._svc.workspaceId = '1265478';
-      var s = document.createElement('script');
-      var sid = xgetParameterByName('sid');
-      if (!sid) {
-        var encodedSid = xgetParameterByName('_svbep');
-        sid = xgetParameterByName('sid',atob(encodedSid));
-      }
-      s.src = '//survey.survicate.com/workspaces/82c6e224453674edcfa7761e20e5f56d/surveys/'+sid+'.js';
-      s.async = true;
-      var e = document.getElementsByTagName('script')[0];
-      e.parentNode.insertBefore(s, e);
-    })(window);
-  </script>
+  <title>Survicate Test</title>
 </head>
-<body class="survicate-body">
+<body>
+  <h1>Test Survey with User ID</h1>
+
+  <script>
+    // workspace id 82c6e224453674edcfa7761e20e5f56d
+    // survey ID 47c63299f46515c
+    
+    // Initialize with user_id and optional traits
+    window.survicate = window.survicate || [];
+    window.survicate.push(['init', {
+      user_id: 'test-user-123', // ← hardcoded user ID
+      traits: {
+        email: 'testuser@example.com', // ← optional, for easier identification in dashboard
+        plan: 'test-plan'
+      }
+    }]);
+  </script>
+
+  <!-- Survicate Embed Script -->
+  <script>
+    (function(w,d,s,o,f,js,fjs){
+      w['SurvicateWidgetObject']=o;
+      w[o]=w[o]||function(){
+        (w[o].q=w[o].q||[]).push(arguments)
+      };
+      js=d.createElement(s),fjs=d.getElementsByTagName(s)[0];
+      js.async=1;
+      js.src=f;
+      js.id="survicate-script";
+      fjs.parentNode.insertBefore(js,fjs);
+    })(window,document,'script','survicate','https://survey.survicate.com/82c6e224453674edcfa7761e20e5f56d/workspace.js');
+  </script>
+
+  <!-- Manually trigger a specific survey -->
+  <script>
+    setTimeout(function () {
+      if (typeof survicate === 'function') {
+        survicate('showSurvey', '47c63299f46515c'); // ← optional if targeting by URL works
+      }
+    }, 2000);
+  </script>
 </body>
 </html>
