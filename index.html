@@ -1,25 +1,25 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Survicate Beispiel</title>
+  <meta charset="UTF-8">
+  <title>Feedback</title>
 </head>
 <body>
-  <h1>Hallo Nutzer!</h1>
+  <h1>Welcome!</h1>
+  <p>Loading feedback survey...</p>
 
-  <!-- Survicate-Snippet -->
+  <!-- Survicate Initialization Script -->
   <script>
-    // Simuliert eine vom Server bereitgestellte User-ID (niemals clientseitig manipulieren)
-    // In der Praxis vom Server per Templating einsetzen oder aus einem sicheren API-Call holen
-    const userId = 'USER_123456'; // <-- vom Backend einsetzen
-
     window.survicate = window.survicate || [];
+    // Optional: you can identify the user if needed like this:
+    /*
     window.survicate.push(['init', {
-      user_id: userId,
+      user_id: 'your-user-id',
       traits: {
-        email: 'user@example.com' // Optional
+        email: 'user@example.com'
       }
     }]);
+    */
   </script>
 
   <!-- Survicate Embed Script -->
@@ -28,7 +28,9 @@
       w['SurvicateWidgetObject'] = o;
       w[o] = w[o] || function() { (w[o].q = w[o].q || []).push(arguments) };
       js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
-      js.async = 1; js.src = f; js.id = "survicate-script";
+      js.async = 1;
+      js.src = f;
+      js.id = "survicate-script";
       fjs.parentNode.insertBefore(js, fjs);
     }(window, document, 'script', 'survicate', 'https://survey.survicate.com/workspace.js'));
   </script>
