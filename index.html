@@ -2,48 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Survicate Test</title>
+  <title>Feedback</title>
 </head>
 <body>
-  <h1>Test Survey with User ID</h1>
+  <h1>Welcome!</h1>
+  <p>survey test</p>
 
+  <!-- Survicate Initialization Script -->
   <script>
-    // workspace id 82c6e224453674edcfa7761e20e5f56d
-    // survey ID 47c63299f46515c
-
-    // Initialize with user_id and optional traits
     window.survicate = window.survicate || [];
+    // Optional: you can identify the user if needed like this:
+    
     window.survicate.push(['init', {
-      user_id: 'test-user-123', // ← hardcoded user ID
+      user_id: 'customer123',
       traits: {
-        email: 'testuser@example.com', // ← optional, for easier identification in dashboard
-        plan: 'test-plan'
+        email: 'user@example.com'
       }
-    }]);
+    }]);    
   </script>
 
   <!-- Survicate Embed Script -->
   <script>
-    (function(w,d,s,o,f,js,fjs){
-      w['SurvicateWidgetObject']=o;
-      w[o]=w[o]||function(){
-        (w[o].q=w[o].q||[]).push(arguments)
-      };
-      js=d.createElement(s),fjs=d.getElementsByTagName(s)[0];
-      js.async=1;
-      js.src=f;
-      js.id="survicate-script";
-      fjs.parentNode.insertBefore(js,fjs);
-    })(window,document,'script','survicate','https://survey.survicate.com/workspaces/82c6e224453674edcfa7761e20e5f56d/web_surveys.js');
-  </script>
-
-  <!-- Manually trigger a specific survey -->
-  <script>
-    setTimeout(function () {
-      if (typeof survicate === 'function') {
-        survicate('showSurvey', '47c63299f46515c'); // ← optional if targeting by URL works
-      }
-    }, 2000);
+    (function(w, d, s, o, f, js, fjs) {
+      w['SurvicateWidgetObject'] = o;
+      w[o] = w[o] || function() { (w[o].q = w[o].q || []).push(arguments) };
+      js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
+      js.async = 1;
+      js.src = f;
+      js.id = "survicate-script";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(window, document, 'script', 'survicate', 'https://survey.survicate.com/workspaces/82c6e224453674edcfa7761e20e5f56d/web_surveys.js'));
   </script>
 </body>
 </html>
